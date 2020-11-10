@@ -1,59 +1,66 @@
 <div class="container">
+  <form #lancamentoForm="ngForm" (ngSubmit)="'#'">
+    <div class="ui-g">
 
-  <div class="ui-g">
+      <div class="ui-g-12">
+        <h1>Novo Lancamento</h1>
+      </div>
 
-    <div class="ui-g-12">
-      <h1>Novo Lancamento</h1>
+      <div class="ui-g-12">
+        <p-selectButton [options]="tipos" #tipo></p-selectButton>
+      </div>
+
+      <div class="ui-g-12 ui-md-3 ui-fluid">
+        <label>Vencimento</label>
+        <p-calendar dateFormat="dd/mm/yy" showIcon="true" name="vencimento" ngModel #vencimento="ngModel" required></p-calendar>
+        <app-message [control]="vencimento" text="Informe o vencimento" error="required"></app-message>
+      </div>
+
+      <div class="ui-g-12 ui-md-3 ui-fluid">
+        <label>{{ tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento' }}</label>
+        <p-calendar dateFormat="dd/mm/yy" showIcon="true"></p-calendar>
+      </div>
+
+      <div class="ui-g-12 ui-md-9 ui-fluid">
+        <label>Descricao</label>
+        <input pInputText type="text" name="descricao" ngModel #descricao="ngModel"
+        required minlength="5">
+        <app-message [control]="descricao" error="required" text="Informe uma descricao."></app-message>
+        <app-message [control]="descricao" error="minlength" text="Minimo {{ descricao.errors?.minlength?.requiredLength }} caracteres."></app-message>
+      </div>
+
+      <div class="ui-g-12 ui-md-3 ui-fluid">
+        <label>Valor</label>
+        <input pInputText type="text" name="valor" ngModel #valor="ngModel"
+          placeholder="0,00" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false}">
+        <app-message [control]="valor" text="Informe o valor" error="required"></app-message>
+      </div>
+
+      <div class="ui-g-12 ui-md-6 ui-fluid">
+        <label>Categoria</label>
+        <p-dropdown name="categoria" ngModel #categoria="ngModel" required
+        [options]="categorias" [autoWidth]="false" [filter]="true" [placeholder]="'Selecione'"></p-dropdown>
+        <app-message [control]="categoria" text="Informe a categoria" error="required"></app-message>
+      </div>
+
+      <div class="ui-g-12 ui-md-6 ui-fluid">
+        <label>Pessoa</label>
+        <p-dropdown name="pessoa" ngModel #pessoa="ngModel" required
+          [options]="pessoas" [autoWidth]="false" [filter]="true" [placeholder]="'Selecione'"></p-dropdown>
+        <app-message [control]="pessoa" text="Informe a pessoa" error="required"></app-message>
+      </div>
+
+      <div class="ui-g-12 ui-fluid">
+        <label>Observacao</label>
+        <textarea pInputTextarea rows="3"></textarea>
+      </div>
+
+      <div class="ui-g-12">
+        <button pButton type="submit" label="Salvar" [disabled]="!lancamentoForm.valid"></button>
+        <button pButton type="button" label="Novo" class="ui-button-info"></button>
+        <a href="javascript:;">Voltar para a pesquisa</a>
+      </div>
+
     </div>
-
-    <div class="ui-g-12">
-      <p-selectButton [options]="tipos" #tipo></p-selectButton>
-    </div>
-
-    <div class="ui-g-12 ui-md-3 ui-fluid">
-      <label>Vencimento</label>
-      <p-calendar dateFormat="dd/mm/yy" showIcon="true"></p-calendar>
-    </div>
-
-    <div class="ui-g-12 ui-md-3 ui-fluid">
-      <label>{{ tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento' }}</label>
-      <p-calendar dateFormat="dd/mm/yy" showIcon="true"></p-calendar>
-    </div>
-
-    <div class="ui-g-12 ui-md-9 ui-fluid">
-      <label>Descricao</label>
-      <input pInputText type="text" name="descricao" ngModel #descricao="ngModel"
-      required minlength="5">
-
-      <app-message [control]="descricao" error="required" text="Informe uma descricao."></app-message>
-      <app-message [control]="descricao" error="minlength" text="Minimo {{ descricao.errors?.minlength?.requiredLength }} caracteres."></app-message>
-    </div>
-
-    <div class="ui-g-12 ui-md-3 ui-fluid">
-      <label>Valor</label>
-      <input pInputText type="text" name="valor" ngModel placeholder="0,00" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false}">
-    </div>
-
-    <div class="ui-g-12 ui-md-6 ui-fluid">
-      <label>Categoria</label>
-      <p-dropdown [options]="categorias" [autoWidth]="false" [filter]="true" [placeholder]="'Selecione'"></p-dropdown>
-    </div>
-
-    <div class="ui-g-12 ui-md-6 ui-fluid">
-      <label>Pessoa</label>
-      <p-dropdown [options]="pessoas" [autoWidth]="false" [filter]="true" [placeholder]="'Selecione'"></p-dropdown>
-    </div>
-
-    <div class="ui-g-12 ui-fluid">
-      <label>Observacao</label>
-      <textarea pInputTextarea rows="3"></textarea>
-    </div>
-
-    <div class="ui-g-12">
-      <button pButton type="button" label="Salvar"></button>
-      <button pButton type="button" label="Novo" class="ui-button-info"></button>
-      <a href="javascript:;">Voltar para a pesquisa</a>
-    </div>
-
-  </div>
+  </form>
 </div>
