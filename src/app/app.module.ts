@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { InputTextModule } from 'primeng/components/inputtext/inputtext';
 import { ButtonModule } from 'primeng/components/button/button';
-
+import { InputTextareaModule } from 'primeng/components/inputtextarea/inputtextarea';
 import { DataTableModule } from 'primeng/components/datatable/datatable';
 import { TooltipModule } from 'primeng/components/tooltip/tooltip';
 
@@ -11,20 +11,23 @@ import { AppComponent } from './app.component';
 import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
+import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LancamentosPesquisaComponent,
     NavbarComponent,
-    PessoasPesquisaComponent
+    PessoasPesquisaComponent,
+    LancamentoCadastroComponent
   ],
   imports: [
     BrowserModule,
     InputTextModule,
     ButtonModule,
     DataTableModule,
-    TooltipModule
+    TooltipModule,
+    InputTextareaModule
   ],
   providers: [],
   bootstrap: [AppComponent]

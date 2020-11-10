@@ -5,6 +5,10 @@ body {
   color: #404C51;
 }
 
+a {
+  text-decoration: none;
+}
+
 label {
   font-weight: bold;
 }
