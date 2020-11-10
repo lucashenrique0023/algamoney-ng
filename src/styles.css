@@ -5,6 +5,10 @@ body {
   color: #404C51;
 }
 
+.ui-dropdown-filter-container {
+  width: 100%;
+}
+
 a {
   text-decoration: none;
   color: #337ab7;
