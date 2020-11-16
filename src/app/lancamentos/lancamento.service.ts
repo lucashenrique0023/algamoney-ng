@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import { Headers, Http, URLSearchParams } from '@angular/http';
 
 import "rxjs/add/operator/toPromise";
+
+export interface LancamentoFiltro {
+  descricao: string;
+}
 
 @Injectable()
 export class LancamentoService {
@@ -13,11 +17,16 @@ export class LancamentoService {
     ) { }
 
 
-    pesquisar(): Promise<any> {
+    pesquisar(filtro: LancamentoFiltro): Promise<any> {
       const headers = new Headers();
+      const params = new URLSearchParams();
       headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
 
-      return this.http.get(this.url + '?resumo', { headers })
+      if (filtro.descricao){
+        params.set('descricao', filtro.descricao);
+      }
+
+      return this.http.get(this.url + '?resumo', { headers, search: params })
       .toPromise()
       .then(response => response.json().content);
     }
