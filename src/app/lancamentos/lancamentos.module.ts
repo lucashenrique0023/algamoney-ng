@@ -1,3 +1,4 @@
+import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -16,6 +17,7 @@ import { SharedModule } from './../shared/shared.module';
 import { LancamentosGridComponent } from './lancamentos-grid/lancamentos-grid.component';
 import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
 import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component';
+import { LancamentoService } from './lancamento.service';
 
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 
@@ -23,7 +25,7 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
   imports: [
     CommonModule,
     FormsModule,
-
+    HttpModule,
     InputTextModule,
     ButtonModule,
     DataTableModule,
@@ -37,6 +39,10 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
     CurrencyMaskModule,
 
     SharedModule
+  ],
+  providers: [
+    HttpModule,
+    LancamentoService
   ],
   declarations: [
     LancamentoCadastroComponent,
