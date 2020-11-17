@@ -1,21 +1,43 @@
 <div class="container">
-
   <div class="ui-g">
+    <form autocomplete="off" (ngSubmit)="pesquisar()">
+      <div class="ui-g-12">
+        <h1>Pessoas</h1>
+      </div>
+
+      <div class="ui-g-12 ui-fluid">
+        <label>Nome</label>
+        <input id="input" pInputText type="text" name="nome" [(ngModel)]="filtro.nome">
+      </div>
+
+      <div class="ui-g-12">
+        <button pButton type="submit" label="Pesquisar"></button>
+      </div>
+    </form>
 
     <div class="ui-g-12">
-      <h1>Pessoas</h1>
-    </div>
+      <p-dataTable [value]="pessoas" [responsive]="true"
+      [rows]="filtro.itensPorPagina" [paginator]="true"
+      [lazy]="true" [totalRecords]="totalRegistros"
+      (onLazyLoad)="aoMudarPagina($event)"
+      emptyMessage="Nenhuma pessoa encontrada." >
+        <p-column field="nome" header="Nome"></p-column>
+        <p-column field="endereco.cidade" header="Cidade"></p-column>
+        <p-column field="endereco.estado" header="Estado"></p-column>
+        <p-column field="status" header="Status">
+          <ng-template let-pess="rowData" pTemplate="body">
+            <span [pTooltip]="!pess.status === true ? 'Ativo' : 'Inativo'">{{ pess.status === true ? 'Ativo' : 'Inativo'}}</span>
+          </ng-template>
+        </p-column>
 
-    <div class="ui-g-12 ui-fluid">
-      <label>Nome</label>
-      <input id="input" pInputText type="text">
+        <p-column styleClass="col-acoes">
+          <ng-template pTemplate="body">
+            <a pButton icon="fa fa-pencil" pTooltip="Editar" tooltipPosition="top"></a>
+            <button pButton icon="fa fa-trash" pTooltip="Excluir" tooltipPosition="top"></button>
+          </ng-template>
+        </p-column>
+      </p-dataTable>
     </div>
-
-    <div class="ui-g-12">
-      <button pButton type="button" label="Pesquisar"></button>
-    </div>
-
-    <app-pessoas-grid [pessoas]="pessoas"></app-pessoas-grid>
 
     <div class="ui-g-12">
       <button pButton type="button" label="Nova Pessoa"></button>

@@ -10,8 +10,8 @@ import { InputTextModule } from 'primeng/components/inputtext/inputtext';
 
 import { SharedModule } from './../shared/shared.module';
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
-import { PessoasGridComponent } from './pessoas-grid/pessoas-grid.component';
 import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component';
+import { PessoaService } from './pessoa.service';
 
 
 @NgModule({
@@ -29,11 +29,12 @@ import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.compo
   ],
   declarations: [
     PessoaCadastroComponent,
-    PessoasGridComponent,
     PessoasPesquisaComponent
   ], exports: [
     PessoaCadastroComponent,
     PessoasPesquisaComponent
+  ], providers: [
+    PessoaService
   ]
 })
 export class PessoasModule { }

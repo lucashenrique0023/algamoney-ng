@@ -23,37 +23,37 @@ export class LancamentoService {
     ) { }
 
 
-    pesquisar(filtro: LancamentoFiltro): Promise<any> {
-      const headers = new Headers();
-      const params = new URLSearchParams();
-      headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
+  pesquisar(filtro: LancamentoFiltro): Promise<any> {
+    const headers = new Headers();
+    const params = new URLSearchParams();
+    headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
 
-      params.set('page', filtro.pagina.toString());
-      params.set('size', filtro.itensPorPagina.toString());
+    params.set('page', filtro.pagina.toString());
+    params.set('size', filtro.itensPorPagina.toString());
 
-      if (filtro.descricao){
-        params.set('descricao', filtro.descricao);
-      }
-
-      if (filtro.dataVencimentoDe){
-        params.set('dataVencimentoDe', moment(filtro.dataVencimentoDe).format('YYYY-MM-DD'))
-      }
-
-      if (filtro.dataVencimentoAte){
-        params.set('dataVencimentoAte', moment(filtro.dataVencimentoAte).format('YYYY-MM-DD'))
-      }
-
-      return this.http.get(this.url + '?resumo', { headers, search: params })
-      .toPromise()
-      .then(response => {
-        const responseJson = response.json();
-        const lancamentos = responseJson.content;
-        const resultado = {
-          lancamentos,
-          total: responseJson.totalElements
-        }
-
-        return resultado;
-      });
+    if (filtro.descricao){
+      params.set('descricao', filtro.descricao);
     }
+
+    if (filtro.dataVencimentoDe){
+      params.set('dataVencimentoDe', moment(filtro.dataVencimentoDe).format('YYYY-MM-DD'))
+    }
+
+    if (filtro.dataVencimentoAte){
+      params.set('dataVencimentoAte', moment(filtro.dataVencimentoAte).format('YYYY-MM-DD'))
+    }
+
+    return this.http.get(this.url + '?resumo', { headers, search: params })
+    .toPromise()
+    .then(response => {
+      const responseJson = response.json();
+      const lancamentos = responseJson.content;
+      const resultado = {
+        lancamentos,
+        total: responseJson.totalElements
+      }
+
+      return resultado;
+    });
+  }
 }
