@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 
 import { ToastyModule } from 'ng2-toasty';
 import { ConfirmDialogModule } from 'primeng/components/confirmdialog/confirmdialog';
@@ -31,7 +31,8 @@ import { CoreModule } from './core/core.module';
     PessoasModule
   ],
   providers: [
-    ConfirmationService
+    ConfirmationService,
+    { provide: LOCALE_ID, useValue: 'pt-BR' }
   ],
   bootstrap: [AppComponent]
 })
