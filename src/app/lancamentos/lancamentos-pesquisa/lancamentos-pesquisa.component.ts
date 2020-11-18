@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
+import { ErrorHandlerService } from './../../core/error-handler.service';
 import { ToastyService } from 'ng2-toasty';
 import { ConfirmationService } from 'primeng/components/common/confirmationservice';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
@@ -20,6 +21,7 @@ export class LancamentosPesquisaComponent implements OnInit {
 
   constructor(
     private lancamentoService: LancamentoService,
+    private errorHandler: ErrorHandlerService,
     private toastyService: ToastyService,
     private confirmation: ConfirmationService
     ) {}
@@ -34,7 +36,8 @@ export class LancamentosPesquisaComponent implements OnInit {
     .then(resultado => {
       this.totalRegistros = resultado.total;
       this.lancamentos = resultado.lancamentos;
-    });
+    })
+    .catch(erro => this.errorHandler.handle(erro));
   }
 
   aoMudarPagina(event: LazyLoadEvent){
@@ -58,8 +61,8 @@ export class LancamentosPesquisaComponent implements OnInit {
       } else {
         this.grid.first = 0
       }
-
     this.toastyService.success('Lancamento excluido com sucesso.');
-    });
+    })
+    .catch(erro => this.errorHandler.handle(erro));
   }
 }
