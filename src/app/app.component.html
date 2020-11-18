@@ -10,3 +10,11 @@
 -->
 
 <ng2-toasty></ng2-toasty>
+<p-confirmDialog header="Confirmacao" icon="fa fa-question-circle" #confirmacao>
+  <p-footer>
+    <button type="button" pButton icon="fa-check" label="Sim"
+      (click)="confirmacao.accept()"></button>
+    <button type="button" pButton icon="fa-times" label="Nao"
+      (click)="confirmacao.reject()"></button>
+  </p-footer>
+</p-confirmDialog>
