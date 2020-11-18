@@ -3,11 +3,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { ToastyModule } from 'ng2-toasty';
+import { ConfirmDialogModule } from 'primeng/components/confirmdialog/confirmdialog';
+import { ConfirmationService } from 'primeng/components/common/confirmationservice';
 
 import { PessoasModule } from './pessoas/pessoas.module';
 import { LancamentosModule } from './lancamentos/lancamentos.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
+
 
 
 
@@ -21,12 +24,15 @@ import { CoreModule } from './core/core.module';
     BrowserAnimationsModule,
 
     ToastyModule.forRoot(),
+    ConfirmDialogModule,
 
     CoreModule,
     LancamentosModule,
     PessoasModule
   ],
-  providers: [],
+  providers: [
+    ConfirmationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
