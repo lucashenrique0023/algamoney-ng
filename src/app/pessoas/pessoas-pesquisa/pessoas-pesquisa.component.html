@@ -16,7 +16,7 @@
     </form>
 
     <div class="ui-g-12">
-      <p-dataTable [value]="pessoas" [responsive]="true"
+      <p-dataTable #tabela [value]="pessoas" [responsive]="true"
       [rows]="filtro.itensPorPagina" [paginator]="true"
       [lazy]="true" [totalRecords]="totalRegistros"
       (onLazyLoad)="aoMudarPagina($event)"
@@ -31,9 +31,9 @@
         </p-column>
 
         <p-column styleClass="col-acoes">
-          <ng-template pTemplate="body">
+          <ng-template let-pess="rowData" pTemplate="body">
             <a pButton icon="fa fa-pencil" pTooltip="Editar" tooltipPosition="top"></a>
-            <button pButton icon="fa fa-trash" pTooltip="Excluir" tooltipPosition="top"></button>
+            <button pButton (click)="confirmacaoExclusao(pess)" icon="fa fa-trash" pTooltip="Excluir" tooltipPosition="top"></button>
           </ng-template>
         </p-column>
       </p-dataTable>
