@@ -23,11 +23,10 @@ export class PessoasPesquisaComponent implements OnInit {
     private pessoaService: PessoaService,
     private errorHandler: ErrorHandlerService,
     private toasty: ToastyService,
-    private confirmation: ConfirmationService
+    private confirmation: ConfirmationService,
     ) { }
 
   ngOnInit() {
-
   }
 
   pesquisar(pagina = 0){

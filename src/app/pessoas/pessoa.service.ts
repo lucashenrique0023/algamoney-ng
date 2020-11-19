@@ -61,4 +61,13 @@ export class PessoaService {
       .toPromise()
       .then(() => null);
   }
+
+  listarTodas(): Promise<any> {
+    const headers = new Headers();
+    headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
+
+    return this.http.get(`${this.url}?resumo`, {headers})
+      .toPromise()
+      .then(resultado => resultado.json().content);
+  }
 }
