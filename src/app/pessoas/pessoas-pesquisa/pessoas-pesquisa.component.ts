@@ -45,17 +45,31 @@ export class PessoasPesquisaComponent implements OnInit {
     this.pesquisar(pagina);
   }
 
-  confirmacaoExclusao(lancamento: any){
+  mudarStatus(pessoa: any) {
+    this.pessoaService.mudarStatus(pessoa.codigo, !pessoa.ativo)
+      .then( () => {
+        if (this.grid.first === 0) {
+          this.pesquisar();
+        } else {
+          this.grid.first = 0;
+        }
+        const msg = !pessoa.ativo ? 'ativada' : 'desativada';
+        this.toasty.success(`Pessoa ${msg} com sucesso.`)
+      })
+      .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  confirmacaoExclusao(pessoa: any) {
     this.confirmation.confirm({
       message: 'Tem certeza que deseja excluir?',
       accept: () => {
-        this.excluir(lancamento);
+        this.excluir(pessoa);
       }
     });
   }
 
-  excluir(lancamento: any){
-    this.pessoaService.excluir(lancamento.codigo)
+  excluir(pessoa: any) {
+    this.pessoaService.excluir(pessoa.codigo)
       .then(() =>
       {
         if (this.grid.first === 0) {
@@ -67,5 +81,4 @@ export class PessoasPesquisaComponent implements OnInit {
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
-
 }
