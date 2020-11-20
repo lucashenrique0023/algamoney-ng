@@ -34,6 +34,8 @@ export class LancamentoCadastroComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    const lancamento = new Lancamento();
+    console.log(lancamento);
     this.carregarCategorias();
     this.carregarPessoas();
   }

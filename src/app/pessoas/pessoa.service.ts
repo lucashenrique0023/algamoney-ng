@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, URLSearchParams } from '@angular/http';
+import { Pessoa } from 'app/core/model';
 
 import "rxjs/add/operator/toPromise";
 
@@ -69,5 +70,15 @@ export class PessoaService {
     return this.http.get(`${this.url}?resumo`, {headers})
       .toPromise()
       .then(resultado => resultado.json().content);
+  }
+
+  salvar(pessoa: Pessoa): Promise<Pessoa> {
+    const headers = new Headers();
+    headers.append('Authorization', 'Basic YWRtaW46YWRtaW4=');
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.post(this.url, JSON.stringify(pessoa), { headers })
+      .toPromise()
+      .then(pessoa => pessoa.json());
   }
 }
