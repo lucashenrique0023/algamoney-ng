@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -25,6 +26,8 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
     CommonModule,
     FormsModule,
     HttpModule,
+    RouterModule,
+
     InputTextModule,
     ButtonModule,
     DataTableModule,
