@@ -3,7 +3,7 @@
     <div class="ui-g">
 
       <div class="ui-g-12">
-        <h1>Nova Pessoa</h1>
+        <h1>{{ editando ? 'Editando ' : 'Nova '}} Pessoa</h1>
       </div>
 
       <div class="ui-g-12 ui-fluid">
@@ -56,8 +56,8 @@
 
       <div class="ui-g-12">
         <button pButton type="submit" label="Salvar"></button>
-        <button pButton type="button" label="Novo"></button>
-        <a href="javascript:;">Voltar para a pesquisa</a>
+        <button pButton (click)="novo(pessoaForm)" type="button" label="Novo"></button>
+        <a routerLink="/pessoas">Voltar para a pesquisa</a>
       </div>
 
     </div>

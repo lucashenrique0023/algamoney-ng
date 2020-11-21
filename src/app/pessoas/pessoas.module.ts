@@ -9,6 +9,7 @@ import { ButtonModule } from 'primeng/components/button/button';
 import { InputTextModule } from 'primeng/components/inputtext/inputtext';
 
 import { SharedModule } from './../shared/shared.module';
+import { PessoaRoutingModule } from './pessoa-routing.module';
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
 import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component';
 import { PessoaService } from './pessoa.service';
@@ -25,7 +26,8 @@ import { PessoaService } from './pessoa.service';
     TooltipModule,
     InputMaskModule,
 
-    SharedModule
+    SharedModule,
+    PessoaRoutingModule
   ],
   declarations: [
     PessoaCadastroComponent,

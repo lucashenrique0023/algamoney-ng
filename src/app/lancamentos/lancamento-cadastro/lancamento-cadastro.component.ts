@@ -50,10 +50,10 @@ export class LancamentoCadastroComponent implements OnInit {
   }
 
   get editando() {
-    return Boolean(this.lancamento.codigo)
+    return Boolean(this.lancamento.codigo);
   }
 
-  buscarLancamentoPorCodigo(codigo: number){
+  buscarLancamentoPorCodigo(codigo: number) {
     this.lancamentoService.buscarPorCodigo(codigo)
       .then(lancamento => {
         this.lancamento = lancamento;
