@@ -49,9 +49,6 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
   declarations: [
     LancamentoCadastroComponent,
     LancamentosPesquisaComponent,
-  ], exports: [
-    LancamentosPesquisaComponent,
-    LancamentoCadastroComponent
-  ]
+  ], exports: []
 })
 export class LancamentosModule { }

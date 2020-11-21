@@ -30,10 +30,9 @@ import { PessoaService } from './pessoa.service';
   declarations: [
     PessoaCadastroComponent,
     PessoasPesquisaComponent
-  ], exports: [
-    PessoaCadastroComponent,
-    PessoasPesquisaComponent
-  ], providers: [
+  ],
+  exports: [],
+  providers: [
     PessoaService
   ]
 })
