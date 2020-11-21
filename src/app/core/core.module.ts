@@ -9,6 +9,7 @@ import { ErrorHandlerService } from './error-handler.service';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
+import { Title } from '@angular/platform-browser';
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component'
   providers: [
     ConfirmationService,
     ErrorHandlerService,
+    Title,
     { provide: LOCALE_ID, useValue: 'pt-BR' }
   ]
 })
